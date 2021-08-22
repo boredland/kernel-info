@@ -38,12 +38,9 @@ runs:
         PAYLOAD_MAINLINE=$(curl -s https://kernel-info.manjaro-sway.download/\?category\=mainline | jq '.[0]')
         echo "::set-output name=mainline::$(echo $PAYLOAD_MAINLINE | jq -r '.version')"
         echo "::set-output name=mainline-pkg::$(echo $PAYLOAD_MAINLINE | jq -r '.packageName')"
-    - id: array
+    - id: list
       shell: bash
       run: |
-        echo ${{ steps.receive.outputs.longterm }}
-        echo ${{ steps.receive.outputs.longterm-pkg }}
-        echo ${{ steps.receive.outputs.stable }}
-        echo ${{ steps.receive.outputs.stable-pkg }}
-        echo ${{ steps.receive.outputs.mainline }}
-        echo ${{ steps.receive.outputs.mainline-pkg }}
+        echo longterm: {{ steps.receive.outputs.longterm }} - ${{ steps.receive.outputs.longterm-pkg }}
+        echo stable: ${{ steps.receive.outputs.stable }} - ${{ steps.receive.outputs.stable-pkg }}
+        echo mainline: ${{ steps.receive.outputs.mainline }} - ${{ steps.receive.outputs.mainline-pkg }}

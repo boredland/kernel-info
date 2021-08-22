@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: receive
-        uses: ./
+        uses: ./ # use boredland/kernel-info@[tag] 
     outputs:
       longterm: ${{ steps.receive.outputs.longterm }}-${{ steps.receive.outputs.longterm-pkg }}
       stable: ${{ steps.receive.outputs.stable }}-${{ steps.receive.outputs.stable-pkg }}
@@ -24,5 +24,5 @@ jobs:
           - ${{ needs.get.outputs.mainline }}
     steps:
       - run: |
-          echo ${{ matrix.kernel }} 
+          echo ${{ matrix.kernel }}
           

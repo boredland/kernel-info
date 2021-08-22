@@ -4,9 +4,15 @@
 
 ## usage
 
+### api
+
 `?version=X.X` - searches for versions that start with given version number
 
 `?category=longterm` - searches for versions that are in the given category
+
+### action
+
+see [here](https://github.com/boredland/kernel-info/blob/main/.github/workflows/test.yml) for a matrix build example.
 
 ## badges
 
