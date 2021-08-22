@@ -1,5 +1,5 @@
 name: 'kernel-info-action'
-description: 'retrieve the current kernel versions by branch'
+description: 'retrieve the current kernel versions by category'
 
 outputs:
   longterm:
