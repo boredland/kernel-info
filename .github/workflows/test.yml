@@ -1,0 +1,11 @@
+name: 'test'
+on:
+  pull_request:
+
+jobs:
+  get:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - id: get-version
+        uses: ./
