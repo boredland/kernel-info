@@ -1,0 +1,49 @@
+name: 'kernel-info-action'
+description: 'retrieve the current kernel versions by branch'
+
+outputs:
+  longterm:
+    description: "latest longterm version"
+    value: ${{ steps.receive.outputs.longterm }}
+  longterm-pkg:
+    description: "latest longterm package version"
+    value: ${{ steps.receive.outputs.longterm-pkg }}
+  stable:
+    description: "latest stable version"
+    value: ${{ steps.receive.outputs.stable }}
+  stable-pkg:
+    description: "latest stable package version"
+    value: ${{ steps.receive.outputs.stable-pkg }}
+  mainline:
+    description: "latest mainline version"
+    value: ${{ steps.receive.outputs.mainline }}
+  mainline-pkg:
+    description: "latest mainline package version"
+    value: ${{ steps.receive.outputs.mainline-pkg }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: receive
+      shell: bash
+      run: |
+        PAYLOAD_LONGTERM=$(curl -s https://kernel-info.manjaro-sway.download/\?category\=longterm | jq '.[0]')
+        echo "::set-output name=longterm::$(echo $PAYLOAD_LONGTERM | jq -r '.version')"
+        echo "::set-output name=longterm-pkg::$(echo $PAYLOAD_LONGTERM | jq -r '.packageName')"
+
+        PAYLOAD_STABLE=$(curl -s https://kernel-info.manjaro-sway.download/\?category\=stable | jq '.[0]')
+        echo "::set-output name=stable::$(echo $PAYLOAD_STABLE | jq -r '.version')"
+        echo "::set-output name=stable-pkg::$(echo $PAYLOAD_STABLE | jq -r '.packageName')"
+
+        PAYLOAD_MAINLINE=$(curl -s https://kernel-info.manjaro-sway.download/\?category\=mainline | jq '.[0]')
+        echo "::set-output name=mainline::$(echo $PAYLOAD_MAINLINE | jq -r '.version')"
+        echo "::set-output name=mainline-pkg::$(echo $PAYLOAD_MAINLINE | jq -r '.packageName')"
+    - id: array
+      shell: bash
+      run: |
+        echo ${{ steps.receive.outputs.longterm }}
+        echo ${{ steps.receive.outputs.longterm-pkg }}
+        echo ${{ steps.receive.outputs.stable }}
+        echo ${{ steps.receive.outputs.stable-pkg }}
+        echo ${{ steps.receive.outputs.mainline }}
+        echo ${{ steps.receive.outputs.mainline-pkg }}
