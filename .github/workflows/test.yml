@@ -7,5 +7,22 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
-      - id: get-version
+      - id: receive
         uses: ./
+    outputs:
+      longterm: ${{ steps.receive.outputs.longterm }}-${{ steps.receive.outputs.longterm-pkg }}
+      stable: ${{ steps.receive.outputs.stable }}-${{ steps.receive.outputs.stable-pkg }}
+      mainline: ${{ steps.receive.outputs.mainline }}-${{ steps.receive.outputs.mainline-pkg }}
+  use:
+    runs-on: ubuntu-20.04
+    needs: get
+    strategy:
+      matrix:
+        kernel:
+          - ${{ needs.get.outputs.longterm }}
+          - ${{ needs.get.outputs.stable }}
+          - ${{ needs.get.outputs.mainline }}
+    steps:
+      - run: |
+          echo ${{ matrix.kernel }} 
+          
