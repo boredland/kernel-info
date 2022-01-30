@@ -1,6 +1,5 @@
 import { VercelRequest, VercelResponse } from "@vercel/node";
 import { parse, Node } from "node-html-parser";
-import fetch from "node-fetch";
 
 const kernelUrl = "https://www.kernel.org/";
 
@@ -8,6 +7,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!!global.__RESULT_CACHE__) console.log("result in cache");
   if (!global.__RESULT_CACHE__) {
     console.log("result not in cache");
+    const fetch = await import('node-fetch').then(mod => mod.default)
     const html = await fetch(kernelUrl).then((res) => res.text());
 
     const dom = parse(html);
