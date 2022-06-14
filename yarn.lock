@@ -112,7 +112,7 @@
   resolved "https://registry.yarnpkg.com/@vercel/build-utils/-/build-utils-4.1.0.tgz#4b1a4fb5f6bebff3b7b68d87a9f3c5922ad72cd0"
   integrity sha512-Dma7JbyHlZ1X/mJG2odK499xJuf5KJULzSAj+RNflBNe2S13IwJw3pw/LCLrP3dMxSbFrU4/ysCiTX9BTmzjHw==
 
-"@vercel/frameworks@^1.0.1":
+"@vercel/frameworks@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@vercel/frameworks/-/frameworks-1.0.1.tgz#649432d8d9b52b4f33727686ff25138b8d1b3cdd"
   integrity sha512-bsiIFsdyAPtHIlVV5JLzIsioB10CpLp3PP9ZsE0r1BQwvPx5TcnQc9YI/PMOy1lgQDzdJ8KsmRdcMz0RJBXcVw==
@@ -2050,7 +2050,7 @@ util@^0.12.3:
     safe-buffer "^5.1.2"
     which-typed-array "^1.1.2"
 
-vercel@^25.1.0:
+vercel@25.1.0:
   version "25.1.0"
   resolved "https://registry.yarnpkg.com/vercel/-/vercel-25.1.0.tgz#2783f27832b578fcaeb91b124c5e4a69d4db560f"
   integrity sha512-uB/x9Gqljw1s2C5Kn/DCNCypbbaDYvPMuVqb0z73NqXNTDl220Q+F24DnKXp9bWmizbmDhRaEmlTRnxPI4pbBg==
