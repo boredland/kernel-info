@@ -10,7 +10,7 @@
     "node-html-parser": "5.3.3"
   },
   "devDependencies": {
-    "@types/node": "16.11.41",
+    "@types/node": "16.11.42",
     "@vercel/frameworks": "1.0.2",
     "@vercel/node": "2.3.2",
     "typescript": "4.7.4",
