@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@types/node": "16.11.43",
-    "@vercel/frameworks": "1.0.2",
+    "@vercel/frameworks": "1.1.0",
     "@vercel/node": "2.4.0",
     "typescript": "4.7.4",
     "vercel": "26.0.0"
