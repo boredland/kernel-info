@@ -28,16 +28,17 @@ runs:
       shell: bash
       run: |
         PAYLOAD_LONGTERM=$(curl -s https://kernel-info.manjaro-sway.download/\?category\=longterm | jq '.[0]')
-        echo "::set-output name=longterm::$(echo $PAYLOAD_LONGTERM | jq -r '.version')"
-        echo "::set-output name=longterm-pkg::$(echo $PAYLOAD_LONGTERM | jq -r '.packageName')"
+        echo "longterm=$(echo $PAYLOAD_LONGTERM | jq -r '.version')" >> $GITHUB_OUTPUT
+        echo "longterm-pkg=$(echo $PAYLOAD_LONGTERM | jq -r '.packageName')" >> $GITHUB_OUTPUT
 
         PAYLOAD_STABLE=$(curl -s https://kernel-info.manjaro-sway.download/\?category\=stable | jq '.[0]')
-        echo "::set-output name=stable::$(echo $PAYLOAD_STABLE | jq -r '.version')"
-        echo "::set-output name=stable-pkg::$(echo $PAYLOAD_STABLE | jq -r '.packageName')"
+        echo "stable=$(echo $PAYLOAD_STABLE | jq -r '.version')" >> $GITHUB_OUTPUT
+        echo "stable-pkg=$(echo $PAYLOAD_STABLE | jq -r '.packageName')" >> $GITHUB_OUTPUT
 
         PAYLOAD_MAINLINE=$(curl -s https://kernel-info.manjaro-sway.download/\?category\=mainline | jq '.[0]')
-        echo "::set-output name=mainline::$(echo $PAYLOAD_MAINLINE | jq -r '.version')"
-        echo "::set-output name=mainline-pkg::$(echo $PAYLOAD_MAINLINE | jq -r '.packageName')"
+        echo "mainline=$(echo $PAYLOAD_MAINLINE | jq -r '.version')" >> $GITHUB_OUTPUT
+        echo "mainline-pkg=$(echo $PAYLOAD_MAINLINE | jq -r '.packageName')" >> $GITHUB_OUTPUT
+
     - id: list
       shell: bash
       run: |
