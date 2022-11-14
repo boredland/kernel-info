@@ -1212,10 +1212,10 @@ node-gyp-build@^4.2.2:
   resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-4.5.0.tgz#7a64eefa0b21112f89f58379da128ac177f20e40"
   integrity sha512-2iGbaQBV+ITgCz76ZEjmhUKAKVf7xfY1sRl4UiKQspfZMH2h06SyhNsnSVy50cwkFQDGLyif6m/6uFXHkOZ6rg==
 
-node-html-parser@6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.1.tgz#7f38f4427fafc242a22135d9db80c1455e837467"
-  integrity sha512-eYYblUeoMg0nR6cYGM4GRb1XncNa9FXEftuKAU1qyMIr6rXVtNyUKduvzZtkqFqSHVByq2lLjC7WO8tz7VDmnA==
+node-html-parser@6.1.3:
+  version "6.1.3"
+  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.3.tgz#207d5c9b447113bb265871991c276c90c856f971"
+  integrity sha512-bYvL774OmSBRShzYv/8JU2a/eKbBXwi9jAtSHOT40gF3YVKwMLFeA08vZFMS4R7A/C+oZdiHKw0pmaVEEdtUqw==
   dependencies:
     css-select "^5.1.0"
     he "1.2.0"
