@@ -4,7 +4,7 @@ on:
 
 jobs:
   get:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - id: receive
@@ -14,7 +14,7 @@ jobs:
       stable: ${{ steps.receive.outputs.stable }}-${{ steps.receive.outputs.stable-pkg }}
       mainline: ${{ steps.receive.outputs.mainline }}-${{ steps.receive.outputs.mainline-pkg }}
   use:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: get
     strategy:
       matrix:
