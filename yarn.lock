@@ -200,12 +200,13 @@
   resolved "https://registry.yarnpkg.com/@vercel/error-utils/-/error-utils-2.0.1.tgz#ea16a69542fe18013ff4f4a93dfc0d2fea9cae64"
   integrity sha512-ZUVpRFArh5eyKpJmdfEuCaMpZKQvZgUq0pQ7PdK8m5FgRYEvF4I0TMJH3JnkbYaMMUH82aYWZr+/hFJtEBcmTQ==
 
-"@vercel/frameworks@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@vercel/frameworks/-/frameworks-1.1.0.tgz#435f02f497568b3723aa89a9a8388d2c9765eb86"
-  integrity sha512-6CqeO/lV+CTQPEUE5+TQJbUQhwX0ZkgXGyABbovdLMDYej8w4YU6/Y3CE+STFw/rHOK7vjZp/5qTU+dO4HRmUA==
+"@vercel/frameworks@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@vercel/frameworks/-/frameworks-2.0.1.tgz#17eb43f8a14b6b51a46aa92e8a423a358f7bf742"
+  integrity sha512-KaVxL3eOCKjbch17jCb4777GxpWdNBRYN8gQLfRsbcqhhZh6H4LyT2WIp5i8P3Hm9tuMvlabgqLmqGcMF9iSmw==
   dependencies:
     "@iarna/toml" "2.2.3"
+    "@vercel/error-utils" "2.0.1"
     js-yaml "3.13.1"
 
 "@vercel/gatsby-plugin-vercel-analytics@1.0.10":
