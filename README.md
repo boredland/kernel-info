@@ -1,16 +1,22 @@
-# run
+# kernel-info.manjaro-sway.download
 
-`vercel dev`
+Little service that makes the kernel information from [kernel.org](https://kernel.org) accessible as a structured json file.
+
+The content of kernel.org is cached for one hour and responses are cached for an our.
 
 ## usage
 
 ### api
 
-`?version=X.X` - searches for versions that start with given version number
+`https://kernel-info.manjaro-sway.download` - all the kernel information
 
-`?category=longterm` - searches for versions that are in the given category
+`https://kernel-info.manjaro-sway.download?version=X.X` - searches for versions that start with given version number
+
+`https://kernel-info.manjaro-sway.download?category=longterm` - searches for versions that are in the given category
 
 ### action
+
+This service can be used as a github action `boredland/kernel-info@version`.
 
 see [here](https://github.com/boredland/kernel-info/blob/main/.github/workflows/test.yml) for a matrix build example.
 
