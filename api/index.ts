@@ -24,11 +24,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const dom = parse(html);
 
-    const result = dom
-      .querySelector(
+    const result = dom?.querySelector(
         "html body#index.home aside#featured.body article table#releases"
-      )
-      .childNodes.filter((node) => {
+      )?.childNodes.filter((node) => {
         return (
           node.nodeType === 1 &&
           (node as Node & { rawTagName: string }).rawTagName === "tr"
