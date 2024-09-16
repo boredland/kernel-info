@@ -58,6 +58,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   const html = await (await fetch(kernelUrl, {
     cf: {
       cacheTtl: 60 * 60,
+      cacheEverything: true,
     }
   })).text();
 
