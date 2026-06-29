@@ -4,7 +4,7 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
-    "node-html-parser": "6.1.13"
+    "node-html-parser": "8.0.4"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260509.1",
