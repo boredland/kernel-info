@@ -8,13 +8,13 @@
         "node-html-parser": "6.1.13",
       },
       "devDependencies": {
-        "@cloudflare/workers-types": "^4.20260509.1",
+        "@cloudflare/workers-types": "^5.0.0",
         "typescript": "^7.0.0",
       },
     },
   },
   "packages": {
-    "@cloudflare/workers-types": ["@cloudflare/workers-types@4.20260509.1", "", {}, "sha512-jFlTTD+0MK/01TdL5sHIsQ8RqzfmvBsGl4hSp87INv2+JIs/JF6EL9J8enuCz6z3fNdfOKISNbGCIrzZRXVrcw=="],
+    "@cloudflare/workers-types": ["@cloudflare/workers-types@5.20260902.1", "", {}, "sha512-FpgVlUNWBLPtC51m/t9Eo8DzbFoOg05MSicoPQRS3eitvPRznJxkxuCy0P23unP2CjLIAczLR5nFNRWlKMJvrA=="],
 
     "@typescript/typescript-aix-ppc64": ["@typescript/typescript-aix-ppc64@7.0.2", "", { "os": "aix", "cpu": "ppc64" }, "sha512-MTKKkWB7p/0E9xi1d1tHtZ5PiLkGEMIq88pK2CubZjOsLtYTLqhgIgi6zepFa+9GHZ6h05NMCkQxGKiPXMxXtQ=="],
 
