@@ -1,6 +1,12 @@
 name: 'kernel-info-action'
 description: 'retrieve the current kernel versions by category'
 
+inputs:
+  base-url:
+    description: "base url of the kernel-info deployment"
+    required: false
+    default: 'https://kernel.manjaro.download'
+
 outputs:
   longterm:
     description: "latest longterm version"
@@ -26,22 +32,20 @@ runs:
   steps:
     - id: receive
       shell: bash
+      env:
+        BASE_URL: ${{ inputs.base-url }}
       run: |
-        PAYLOAD_LONGTERM=$(curl -s https://kernel-info.manjaro-sway.download/\?category\=longterm | jq '.[0]')
-        echo "longterm=$(echo $PAYLOAD_LONGTERM | jq -r '.version')" >> $GITHUB_OUTPUT
-        echo "longterm-pkg=$(echo $PAYLOAD_LONGTERM | jq -r '.packageName')" >> $GITHUB_OUTPUT
+        set -euo pipefail
 
-        PAYLOAD_STABLE=$(curl -s https://kernel-info.manjaro-sway.download/\?category\=stable | jq '.[0]')
-        echo "stable=$(echo $PAYLOAD_STABLE | jq -r '.version')" >> $GITHUB_OUTPUT
-        echo "stable-pkg=$(echo $PAYLOAD_STABLE | jq -r '.packageName')" >> $GITHUB_OUTPUT
-
-        PAYLOAD_MAINLINE=$(curl -s https://kernel-info.manjaro-sway.download/\?category\=mainline | jq '.[0]')
-        echo "mainline=$(echo $PAYLOAD_MAINLINE | jq -r '.version')" >> $GITHUB_OUTPUT
-        echo "mainline-pkg=$(echo $PAYLOAD_MAINLINE | jq -r '.packageName')" >> $GITHUB_OUTPUT
+        for CATEGORY in longterm stable mainline; do
+          PAYLOAD=$(curl -sSf "${BASE_URL%/}/category/${CATEGORY}.json" | jq '.[0]')
+          echo "${CATEGORY}=$(echo "$PAYLOAD" | jq -r '.version')" >> $GITHUB_OUTPUT
+          echo "${CATEGORY}-pkg=$(echo "$PAYLOAD" | jq -r '.packageName')" >> $GITHUB_OUTPUT
+        done
 
     - id: list
       shell: bash
       run: |
-        echo longterm: {{ steps.receive.outputs.longterm }} - ${{ steps.receive.outputs.longterm-pkg }}
+        echo longterm: ${{ steps.receive.outputs.longterm }} - ${{ steps.receive.outputs.longterm-pkg }}
         echo stable: ${{ steps.receive.outputs.stable }} - ${{ steps.receive.outputs.stable-pkg }}
         echo mainline: ${{ steps.receive.outputs.mainline }} - ${{ steps.receive.outputs.mainline-pkg }}

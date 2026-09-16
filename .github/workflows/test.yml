@@ -3,6 +3,16 @@ on:
   pull_request:
 
 jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+      - run: bun install --frozen-lockfile
+      - run: bun run typecheck
+      - run: bun run build
   get:
     runs-on: ubuntu-24.04
     steps:
@@ -25,4 +35,3 @@ jobs:
     steps:
       - run: |
           echo ${{ matrix.kernel }}
-          
