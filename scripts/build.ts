@@ -66,9 +66,11 @@ const versionPrefixes = (version: string) => {
 const html = await (await fetch(kernelUrl)).text();
 const releases = extractData(parse(html));
 
-const files = new Map<string, Release[]>([["index.json", releases]]);
+const categories = [...new Set(releases.map((release) => release.category))];
 
-for (const category of new Set(releases.map((release) => release.category))) {
+const files = new Map<string, unknown>([["all.json", releases]]);
+
+for (const category of categories) {
   files.set(
     `category/${category}.json`,
     releases.filter((release) => release.category === category)
@@ -83,6 +85,21 @@ for (const prefix of new Set(
     releases.filter((release) => release.version.startsWith(prefix))
   );
 }
+
+// GitHub Pages drops the query string, so a stale `?category=` request lands
+// here. Serving the full release array at the root would answer it with
+// plausible-looking data for the wrong category, so the root is a discovery
+// document instead: wrong shape, and it names its replacement.
+files.set("index.json", {
+  message: "Query parameters are not supported. Use the path endpoints below.",
+  endpoints: {
+    all: `https://${customDomain}/all.json`,
+    category: `https://${customDomain}/category/{category}.json`,
+    version: `https://${customDomain}/version/{prefix}.json`,
+  },
+  categories,
+  generated: new Date().toISOString(),
+});
 
 await Promise.all([
   ...Array.from(files, ([path, content]) =>

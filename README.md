@@ -2,15 +2,18 @@
 
 Little service that makes the kernel information from [kernel.org](https://kernel.org) accessible as a structured json file.
 
-A [scheduled workflow](https://github.com/boredland/kernel-info/blob/main/.github/workflows/deploy.yml) scrapes kernel.org once an hour and deploys the rendered json to github pages.
+A [scheduled workflow](https://github.com/manjaro-sway/kernel-info/blob/main/.github/workflows/deploy.yml) scrapes kernel.org once an hour and deploys the rendered json to github pages.
 
 ## usage
 
 ### api
 
-Static files, so what used to be query parameters are paths now. The payload shape is unchanged.
+Static files on github pages, which ignores query strings. The former
+`?category=` and `?version=` filters are paths now; the payload shape is
+unchanged. `/` is a discovery document, not a release array, so a stale
+query-string request fails instead of silently returning every category.
 
-`https://kernel.manjaro.download/` - all the kernel information
+`https://kernel.manjaro.download/all.json` - all the kernel information
 
 `https://kernel.manjaro.download/version/X.X.json` - versions that start with the given version number
 
@@ -18,9 +21,9 @@ Static files, so what used to be query parameters are paths now. The payload sha
 
 ### action
 
-This service can be used as a github action `boredland/kernel-info@version`.
+This service can be used as a github action `manjaro-sway/kernel-info@version`.
 
-see [here](https://github.com/boredland/kernel-info/blob/main/.github/workflows/test.yml) for a matrix build example.
+see [here](https://github.com/manjaro-sway/kernel-info/blob/main/.github/workflows/test.yml) for a matrix build example.
 
 ## badges
 
