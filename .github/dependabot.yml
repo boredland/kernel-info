@@ -1,0 +1,42 @@
+version: 2
+updates:
+  - package-ecosystem: bun
+    directory: /
+    schedule:
+      interval: weekly
+    # Security updates ignore `update-types` conditions, so suppressing minor
+    # and patch here leaves vulnerability fixes untouched.
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-minor
+          - version-update:semver-patch
+    # Matches bunfig.toml's minimumReleaseAge: don't touch a release for 3 days.
+    cooldown:
+      default-days: 3
+    groups:
+      bun-majors:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        update-types:
+          - major
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - version-update:semver-minor
+          - version-update:semver-patch
+    cooldown:
+      default-days: 3
+    groups:
+      action-majors:
+        applies-to: version-updates
+        patterns:
+          - '*'
+        update-types:
+          - major
